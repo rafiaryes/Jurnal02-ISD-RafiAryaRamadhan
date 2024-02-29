@@ -19,5 +19,14 @@ public class Main {
 
         daftarATK.display();
         daftarBag.display();
+
+        System.out.println();
+        System.out.println("DAFTAR BARANG SETELAH DIREMOVE");
+        
+        daftarATK.removeData(0);
+        daftarATK.display();
+
+        daftarBag.removeData(0);
+        daftarBag.display();
     }
 }
