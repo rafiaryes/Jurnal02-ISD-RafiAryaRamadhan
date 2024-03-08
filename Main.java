@@ -1,32 +1,34 @@
-import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        GenArrayList<ATK> daftarATK = new GenArrayList<>(5);
-        GenArrayList<Bag> daftarBag = new GenArrayList<>(5);
-
-        daftarATK.addData(new ATK("A001", "Pulpen Kenko", "Pulpen", 100));
-        daftarATK.addData(new ATK("A002", "Pensil Stabilo 2B", "Pensil", 100));
-        daftarATK.addData(new ATK("A003", "Spidol Snowman", "Spidol", 100));
-        daftarATK.addData(new ATK("B001", "Sinar Dunia", "Buku Tulis", 100));
-        daftarATK.addData(new ATK("B002", "Paper One", "Kertas HVS", 100));
-
-        daftarBag.addData(new Bag("C001", "Tas Eiger", "Tas", 100));
-        daftarBag.addData(new Bag("C002", "Tempat Pensil Faber Castle", "Tempat Pensil", 100));
-        daftarBag.addData(new Bag("C003", "Papan Jalan Faber Castle", "Papan Jalan", 100));
-        daftarBag.addData(new Bag("C004", "Papan Tulis Whiteboard", "Papan Tulis", 100));
-        daftarBag.addData(new Bag("C001", "Streples Joyko", "Streples", 100));
-
-        daftarATK.display();
-        daftarBag.display();
-
-        System.out.println();
-        System.out.println("DAFTAR BARANG SETELAH DIREMOVE");
-        
-        daftarATK.removeData(0);
-        daftarATK.display();
-
-        daftarBag.removeData(0);
-        daftarBag.display();
+        Scanner s = new Scanner(System.in);
+        LinkedList<Buku> daftar = new LinkedList<>();
+        while (true) {
+            System.out.println("\nPilih menu :\n1. Input data\n2. Hapus data\n3. Cetak list\n4. Keluar");
+            System.out.print("Masukkan pilihan ");
+            int pilihan = s.nextInt();
+            switch (pilihan) {
+                case 1:
+                    System.out.print("Masukkan judul buku: ");
+                    String judul = s.next();
+                    System.out.print("Masukkan nama penulis: ");
+                    String penulis = s.next();
+                    System.out.print("Masukkan tahun terbit: ");
+                    int tahunterbit = s.nextInt();
+                    daftar.addNode(new Buku(judul, penulis, tahunterbit));
+                    break;
+                case 2:
+                    daftar.deleteNode();
+                    break;
+                case 3:
+                    daftar.printList();
+                    break;
+                case 4:
+                    s.close();
+                    System.exit(0);
+                    break;
+            }
+        }
     }
 }
